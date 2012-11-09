@@ -66,9 +66,39 @@ Un problema muy grande (e interesante) que hay con Google, es que mientras más 
 Es también importante resaltar que las personas somos muy malas para recordar hechos específicos y cada vez dependemos más y más de Google, entonces al **buscar y encontrar** (recuperar la información), le estamos dando información a Google sobre la relevancia de un documento en nuestra búsqueda. Esto es darle retroalimentación a Google, que mejora el Page Rank.
 
 
-## Otros tipos de búsquedas
+### Otros tipos de búsquedas
 
 La búsqueda de palabras en texos es, posiblemente la más sencilla. La dificultad se obtiene por la cantidad de información, no por la forma de buscar. Pero, qué pasa si lo que buscamos no son palabras sino objetos? Por ejemplo, cómo se buscaría una imagen en una colección de imágenes? Un índice **no** es la mejor forma de hacer esto. Existe una aproximación llamada **Locality Sensitive Hashing**.
 
-### Locality Sensitive Hashing
+#### Locality Sensitive Hashing
+
+La idea básica de LSH es que los objetos que "se parecen" tendrán el mismo resultado en una función de Hash `h`. Es decir:
+
+* Si `x == y` o `x similar y`, `h(x) == h(y)` con gran probabilidad.
+* Si `x != y` o `x muy-diferente y`, `h(x) != h(y)` con gran probabilidad.
+
+La construcción de la función `h` es compleja y estaba por fuera del alcance del curso, pero se recomienda leer [Ulman and Rajamaran - Capítulo 3](http://infolab.stanford.edu/~ullman/mmds/book.pdf).
+
+Normalmente, LSH se verá de la siguiente forma:
+
+![LSH Common Form](http://f.cl.ly/items/0E412E2A441a1I1Q2V0c/CodeCogsEqn.gif)
+
+Donde `k` es las veces que se repite cada función, `p` la probabilidad de que la función evaluada sea 1 (un acierto) y `b` la cantidad de funciones que se toman. Esto implica que una variación pequeña en `p`, afectará de manera muy grande el resultado.
+
+
+## Escuchar
+
+En esta sección se trabajó el tema de _información_. Se tocaron varios aspectos de teoría de la información, como "¿qué es nueva información?" y se brinda la definición de Claude Shannon en 1948: La información está relacionada a la *sorpresa*. Es decir, un mensaje que informa de algo que tiene una baja probabilidad `p` tiene más información que algo que **siempre** ocurre.
+
+Por *escuchar* se entiende, por ejemplo, el poder diferenciar usuarios que van a visitar una página web a usuarios que van a comprar. Se "escucha" sus búsquedas y se toman decisiones respecto a estas. Ojo, es diferente a "encontrar" información. Si hay una gran probabilidad de comprar (se buscó por ejemplo 'flores rojas baratas') se puede mostrar publicidad. Pero, si la búsqueda es 'flores rojas', es posible que **no** se esté pensando en comprar.
+
+Al tomar en cuenta esto, se introduce el concepto de "información mutua" (se definirá más tarde), al aumentar la información mutua entre un usuario (su búsqueda) y la publicidad, se aumenta la rentabilidad.
+
+Del mismo modo, el contenido de las páginas web sirve como "búsqueda" para mostrar la publicidad. Pero entran a jugar otros factores como las palabras claves de un documento y se introduce el concepto de **Inverse Document Frequency - IDF** de una palabra. Esto es, si una palabra es muy común en la web, no es importante. Así se tiene que la palabra "*Turing*" es mejor palabra clave que "*Persona*". Pero, palabras más raras, más comunes en el documento, son aún mejores. Entonces se define la **frecuencia de un término - TF** y se puede obtener el **TF-IDF**.
+
+**IDF** de una palabra `w` = ![IDF](http://f.cl.ly/items/0g0T3L183F2N1f1n1y3b/CodeCogsEqn.png)
+
+Frecuencia de `w` en un documento `d` = ![TF](http://f.cl.ly/items/3Q0f00322H0u0Y0X0Y0r/CodeCogsEqn1.png)
+
+El **TF-IDF** = ![TF-IDF](http://f.cl.ly/items/0l2e0L1C332H3E3E2j0y/CodeCogsEqn2.png)
 
