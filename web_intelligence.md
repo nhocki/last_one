@@ -140,3 +140,29 @@ Estos clasificadores funcionan igual para N variables (debido a la independencia
 ![Bayes Generalizado](http://f.cl.ly/items/052M2D2A3s3j040t0w1e/bayesgral.png)
 
 Como esto da una probabilidad, se elige un límite. Si la probabilidad es al menos el límite se tiene que el usuario es un comprador, si da por debajo se tiene que el usuario es un navegador.
+
+Si miramos *machine learning* desde el punto de vista de teoría de la información, se están transmitiendo características (de una búsqueda, como flores rojas baratas) para predecir un comportamiento (comprar o solo navegar). La idea es mejorar la información mutua entre la búsqueda y el resultado, pero para esto, se necesita definir *información mutua*. Entonces, la **información mutua** entre un término (`F`) y una comportamiento (`B`) es:
+
+![Mutual Info](http://f.cl.ly/items/2e1E3p1h0Z3U2R0Q0M39/CodeCogsEqn.gif)
+
+Claramente, si los términos son independientes, se tiene que `p(f,b) = p(f)*p(b)` y `I(F,B) = 0`. Se presenta un ejemplo en el cual se tienen comentarios sobre el curso, varios positivos y negativos (ya catalogados, recordemos que es decidir en base a resultados pasados). Se muestra como la palabra "odiar" tiene información mutua con el sentimiento (negativo), mientras que la palabra "curso" no.
+
+
+## Aprender
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
