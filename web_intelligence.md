@@ -94,7 +94,7 @@ Por *escuchar* se entiende, por ejemplo, el poder diferenciar usuarios que van a
 
 Al tomar en cuenta esto, se introduce el concepto de "información mutua" (se definirá más tarde), al aumentar la información mutua entre un usuario (su búsqueda) y la publicidad, se aumenta la rentabilidad.
 
-Del mismo modo, el contenido de las páginas web sirve como "búsqueda" para mostrar la publicidad. Pero entran a jugar otros factores como las palabras claves de un documento y se introduce el concepto de **Inverse Document Frequency - IDF** de una palabra. Esto es, si una palabra es muy común en la web, no es importante. Así se tiene que la palabra "*Turing*" es mejor palabra clave que "*Persona*". Pero, palabras más raras, más comunes en el documento, son aún mejores. Entonces se define la **frecuencia de un término - TF** y se puede obtener el **TF-IDF**.
+Del mismo modo, el contenido de las páginas web sirve como "búsqueda" para mostrar la publicidad. Pero entran a jugar otros factores como las palabras claves de un documento y se introduce el concepto de **Inverse Document Frequency - IDF** de una palabra. *Es inverso pues no se buscan documentos desde palabras claves (que sería la búsqueda), sino palabras claves a partir de un documento*. Esto es, si una palabra es muy común en la web, no es importante. Así se tiene que la palabra "*Turing*" es mejor palabra clave que "*Persona*". Pero, palabras más raras, más comunes en el documento, son aún mejores. Entonces se define la **frecuencia de un término - TF** y se puede obtener el **TF-IDF**.
 
 **IDF** de una palabra `w` = ![IDF](http://f.cl.ly/items/0g0T3L183F2N1f1n1y3b/CodeCogsEqn.png)
 
@@ -102,3 +102,41 @@ Frecuencia de `w` en un documento `d` = ![TF](http://f.cl.ly/items/3Q0f00322H0u0
 
 El **TF-IDF** = ![TF-IDF](http://f.cl.ly/items/0l2e0L1C332H3E3E2j0y/CodeCogsEqn2.png)
 
+El **TF-IDF** se inventó como una heurística, pero en 2003 se demostró que la **información mutua** entre **todas** las páginas y **todas** las palabras es proporcional a:
+
+![Mutial Information](http://f.cl.ly/items/0O301e31131U3x400V2i/CodeCogsEqn.png)
+
+* “*An information-theoric perspective of TF-IDF measures*”, Kiko Aizawa, Journal of Information Processing and Management, Volume 39 (1), 2003
+
+### Machine Learning
+
+Machine learning es "aprender" basado en (mucha) información pasada. Es hacer predicciones usando probabilidad condicionada (por ejemplo, el [teorema de Bayes](http://es.wikipedia.org/wiki/Teorema_de_Bayes)).
+
+Es muy importante resaltar que si dos variables `R` y `B` son **independientes**, se tiene que `P(R | B) = P(R)`. Es decir, el hecho de *saber* que `B` ocurrió, no influye en la probabilidad de que ocurra `R`.
+
+#### Clasificador Bayesiano Ingenuo
+
+Emepecemos por definir un clasificador, esto es simplemente un mecanismo de clasificar algún contenido. Por ejemplo, se puede asignar un "sentimiento" positivo o negativo a un comentario (Me encanta la leche - positivo  vs  No me gusta la leche - negativo).
+
+Un Clasificador Bayesiano es aquel que se basa en el Teorema de Bayes. Es *ingenuo* pues se **asume** que todas las variables predictorias son independientes. Recordemos el Teorema de Bayes:
+
+`P(B,R) = P(B|R) P(R) = P(R|B) P(B)`
+
+Ahora, supongamos que un usuario busca "flores `R`ojas y `B`aratas", queremos saber si ese usuario es un 'navegador' o un 'comprador'. En otras palabras si `C = y`.
+
+* `P(C|R,B) * P(R,B)` -> Cuál es la prob. de que sea un `C`omprador si se da `R` y `B`?
+* `P(R,B|C) * P(C)` -> Bayes
+* `P(R|B,C) * P(B|C) * P(C)` -> Bayes en el primer término
+* `P(R|C) * P(B|C) * P(C)` -> Independencia de términos
+
+Ahora, si se dan valores a `R` y `B` (`r` y `b`), se tiene:
+
+![Bayes Naïve Classifier](http://f.cl.ly/items/0P2x3H361x2o281E1v0Z/bayes.png)
+
+Recordando que *machine learning* es basando en datos antiguos, se tienen los valores de cada término de la expresión.
+
+Estos clasificadores funcionan igual para N variables (debido a la independencia entre ellas), entonces se puede generalizar a:
+
+![Bayes Generalizado](http://f.cl.ly/items/052M2D2A3s3j040t0w1e/bayesgral.png)
+
+Como esto da una probabilidad, se elige un límite. Si la probabilidad es al menos el límite se tiene que el usuario es un comprador, si da por debajo se tiene que el usuario es un navegador.
