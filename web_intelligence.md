@@ -150,10 +150,40 @@ Claramente, si los términos son independientes, se tiene que `p(f,b) = p(f)*p(b
 
 ## Aprender
 
+En la sección de extración de datos, se habla de computación paralela. Se empieza definiendo la **aceleración (S)** que nos dice realmente cuánto se mejoró al paralelizar el procesamiento. Si procesar los datos con 1 solo proceso toma `Ti` tiempo y con `p` procesos toma `Tp`, entonces `S = Ti / Tp`.
 
+Se define también la **eficiencia (E)** de la paralelización como: `E = Ti/(p*Tp)`.
 
+### Map Reduce
 
+Map Reduce es una *forma* de paralelizar el procesamiento que consiste en dos *entidades*. Un *mapper* y un *reducer*. Los *mappers* reciben parejas `K1, V1` de un diccionario (llave -> valor) y lo transforman en parejas `K2, V2`. Los *reducers* reciben **todas** las parajas (`K2, V2` )de un `K2` específico y procesan estos datos. Normalmente se combinan los datos (contar ocurrencias o sumar números). La plataforma donde se corre el sistema está encargada de enviar todas las parejas de `K2` al mismo *reducer*.
 
+Es importante resaltar que *map-reduce* es una forma de procesamiento **en lote**. Esto quiere decir que no hay interacción (ni feedback) hasta que se tiene el resultado final.
+
+Tomemos el ejemplo de contar las palabras en docuementos. Queremos saber cuántas veces existe una palabra en un conjunto de documentos. Tenemos entonces que cada *mapper* recibe una pareja de `(idDocumento, 'texto')
+` y producen un arreglo de parejas `(palabra, cuentaPalabraEnDocumento)`.
+
+![Mappers](http://f.cl.ly/items/1Z3F2s1z0S111l2D1S09/mapp.gif)
+
+Ahora, cada *reducer* redice un arreglo de parejas, donde el primer elemento de cada pareja es el mismo (la palabra). Claramente esto viene de muchos documentos diferentes, pero es **necesario** que la *llave* de la pareja sea la misma. Tenemos entonces el siguiente reducer:
+
+![Reducers](http://f.cl.ly/items/0g2W131k34230K1G3r2e/red.gif)
+
+El proceso se puede mejorar un poco más si los *mappers* procesan ciertos datos y pasan resultados parciales a los reducers. Pero, para que esto sea posible, la función final debe ser asociativa y conmutativa. Esto se debe a que se hace todo en diferente orden y por diferentes *mappers*, entonces el orden no puede importar.
+
+La solución al exámen de Map-Reduce se puede encontrar en: [https://gist.github.com/8d43d211816208efe7d2](https://gist.github.com/8d43d211816208efe7d2). El archivo `word_count.py` contiene la solución al problema.
+
+#### ¿Cómo funciona Map Reduce?
+
+Se tiene un nodo principal (master) que vigila el proceso. Se tienen los archivos de entrada divididos en la red (para evitar un cuello de botella en la lectura). El proceso master inicia los *mappers*, que leen los archivos y los procesan. Es importante resaltar que, por la forma como se plantean los problemas, si un mapper falla se puede iniciar otro y volver a empezar sin que el sistema tenga problemas.
+
+El problema está si falla el nodo master. Obviamente este nodo está monitoreado y en una máquina de alto rendimiento y, dados `n` (grande) procesos, la probabilidad de que al menos uno falle es muy alta, pero de que falle uno específico es muy baja. Basados en esto el master "siempre estará vivo".
+
+Los *mappers* escriben los resultados (parciales) a disco y el master inicia varios nodos *reducers*. Un *mapper* que haya finalizado se puede utilizar como un *reducer* posteriormente. El master es el encargado de enrutar los resultados parciales para que cada *reducer* reciba **todas** las parejas de la misma llave y así poder juntar los resultados.
+
+![Map Reduce](http://f.cl.ly/items/1Z0c1h1w450o1l2o0V2C/mapreduce.png)
+
+Map Reduce es muy una aproximación muy poderosa en la cual **siempre** se escribe (o se obtiene) nueva información. Es importante entender que el resultado de un proceso de Map-Reduce puede ser la entrada de otro proceso, encadenando así diferentes resultados para generar mucha más información **nueva**.
 
 
 
