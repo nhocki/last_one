@@ -15,7 +15,11 @@ El curso se dió en un formato de:
 * Predecir (Data Mining)
 * Corregir (Optimization)
 
+Todo este proceso apoyado por tecnología de "big data" (para manejar muchos datos) que permite obtener cierta información de los datos y poderlos manejar en muchos servidores a la vez.
+
 En cada sección se introducían nuevos conceptos y se iban conectando para al final tener una "cadena" de herramientas que posibilitan tener una aplicación web "inteligente".
+
+![Big Data Thing](http://f.cl.ly/items/2l1O0R1u343b2r2f0L2x/bigdata.png)
 
 
 ## Observar y Buscar
@@ -186,13 +190,33 @@ Los *mappers* escriben los resultados (parciales) a disco y el master inicia var
 Map Reduce es muy una aproximación muy poderosa en la cual **siempre** se escribe (o se obtiene) nueva información. Es importante entender que el resultado de un proceso de Map-Reduce puede ser la entrada de otro proceso, encadenando así diferentes resultados para generar mucha más información **nueva**.
 
 
+## Aprender
+
+Cuando se habla de aprender, se hace referencia a extraer "reglas" desde los datos. Estas reglas se dan por relaciones entre diferentes características de los datos, que no tienen que ser independientes entre ellas. Entonces, aprender esas reglas es básicamente encontrar las características de los datos que están relacionadas.
+
+Por ejemplo, se podría "aprender" que un comentario que tenga "gusta mucho" es un comentario positivo, mientras que uno que tenga "no gusta" es negativo. Se han conseguido otras reglas menos obvias como que, si un cliente compra leche y pañales, probablemente comprará cerveza.
+
+El razonamiento para obtener una relación entre dos términos (características) es algo así: Si los dos términos (por decir pañales y cerveza) fueran independientes, entonces no habría muchos más datos donde no ocurrieran juntos que donde sí. Esta cantidad de ocurrencias donde salen los dos muestra una fuerte relación entre ellos. Esto es una razón necesaria, pero no suficiente para obtener una regla.
+
+Para inferir la regla asociativa `A, B, C => D` se necesita:
+
+* **Alto soporte:** `P(A,B,C,D) > s`, esto quiere decir que los términos aparecen juntos "*suficientes*" veces.
+* **Alta confianza** `P(D|A,B,C) > c`, esto quiere decir que de todos los casos donde se tiene `A,B,C`, muchos tienen `D`.
+* **Altamente Interesante** `(P(D|A,B,C) / P(D)) > i`, esto significa que la *confianza* de que `D` ocurre más con `A,B,C` es mayor que la probabilidad de obtener `D` solo. Si por ejemplo, todos los datos tienen `D`, la regla no es *interesante* y no se debe tener en cuenta.
+
+Ahora miremos **cómo** se encuentran estas reglas, sabiendo que existen muchas combinaciones de términos, si cada una tiene dos valores (por ejemplo, se compró o no), se tienen `2^N` combinaciones, lo cual es muy grande.
+
+Se necesita una observación clave: **Si `A,B` tienen alto soporte (`> s`), entonces también lo tienen `A` y `B` (por separado)**. Esto permite crear un algoritmo que busque todos los términos (separados) que tengan soporte `> s` y este set va a contener **todas** las parejas, tripletas y demás conjuntos posibles. Así, no se necesitan mirar **todas** las combinaciones de términos, sino las *posibles*.
+
+Es claro que al obtener todas las parejas `X,Y` que tienen soporte `> s`, se obtienen todas las posibles tripletas en ese mismo set. Y así sucesivamente hasta no encontrar un conjunto de `N+1` términos con soporte `> s`.
+
+Al tener todos los posibles valores (parejas, tripletas… - que no van a ser muchos) se mira, para cada set, la *confianza* y que tan *interesantes* son.
+
+**Como solo se necesita contar, se puede utilizar Map Reduce**
 
 
+### ¿Cuánto se ha aprendido?
 
+Se plantea una pregunta interesante y que es un tema abierto de investigación y es, realmente, ¿cuánto se ha aprendido?. Si tomamos por ejemplo un traductor que toma un texto en inglés y lo traduce a chino, siguiendo unas reglas de gramática y semántica, se puede decir que el traductor sabe chino?
 
-
-
-
-
-
-
+Todo esta traducción se da por un "*razonamiento mecánico*" y se cuestiona hasta que punto esto puede ser considerado "inteligencia y aprendizaje".
