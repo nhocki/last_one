@@ -148,9 +148,9 @@ Si miramos *machine learning* desde el punto de vista de teoría de la informaci
 Claramente, si los términos son independientes, se tiene que `p(f,b) = p(f)*p(b)` y `I(F,B) = 0`. Se presenta un ejemplo en el cual se tienen comentarios sobre el curso, varios positivos y negativos (ya catalogados, recordemos que es decidir en base a resultados pasados). Se muestra como la palabra "odiar" tiene información mutua con el sentimiento (negativo), mientras que la palabra "curso" no.
 
 
-## Aprender
+## Cargar Datos
 
-En la sección de extración de datos, se habla de computación paralela. Se empieza definiendo la **aceleración (S)** que nos dice realmente cuánto se mejoró al paralelizar el procesamiento. Si procesar los datos con 1 solo proceso toma `Ti` tiempo y con `p` procesos toma `Tp`, entonces `S = Ti / Tp`.
+En la sección de cargar de datos, se habla de computación paralela. Se empieza definiendo la **aceleración (S)** que nos dice realmente cuánto se mejoró al paralelizar el procesamiento. Si procesar los datos con 1 solo proceso toma `Ti` tiempo y con `p` procesos toma `Tp`, entonces `S = Ti / Tp`.
 
 Se define también la **eficiencia (E)** de la paralelización como: `E = Ti/(p*Tp)`.
 
