@@ -154,10 +154,25 @@ En esta sección del estándar, se definen dos formas de uso para los laboratori
 
 ![BATCH Consumer Client](http://f.cl.ly/items/332t083A3n2W3K1E1k0k/golc2.png)
 
-
 Ahora se muestra un *consumidor* que usará la interfaz del *proveedor*, esto simplifica el diseño del laboratorio pero la interfaz gráfica que verán los estudiantes, posiblemente, no será consistente.
 
 ![BATCH Provider Client](http://f.cl.ly/items/2b172x081i2i1s3v0w3x/golc3.png)
+
+Los mensajes definidos en el estándar para laboratorios *batch*, son:
+
+* `BatchExpCreate` - Crea un experimento nuevo en el proveedor.
+* `BatchExpDelete` - Elimina un experimento en el proveedor.
+* `BatchExpGetSpecs` - Obtiene la información sobre los parámetros necesarios en el experimento. Tanto requeridos como opcionales.
+* `BatchExpSetDefn` - Configura un experimento en el proveedor.
+* `BatchExpGetDefn` - Recupera la configuración actual del experimento.
+* `BatchExpExecute` - Envía una petición de ejecución de un experimento previamente configurado.
+* `BatchExpLaunchProvIF` - Retorna una URL para usar el laboratorio utilizando la interfaz del proveedor.
+* `BatchExpGetResults` - Obtiene los resultados de un experimento.
+
+A continuación se muestra un diagrama de secuencias para utilizar una interfaz del consumidor. En el estándar se muestran ambos casos, pero solo pongo la del consumidor pues es la más compleja.
+
+![Batch](http://f.cl.ly/items/1a3w1C0A430O3c0a1B1z/golc3.png)
+
 
 
 
