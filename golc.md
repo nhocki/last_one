@@ -192,12 +192,36 @@ A continuación se muestra un diagrama de secuencias donde se utiliza la interfa
 ![Golc Interactive](http://f.cl.ly/items/3e0R393E0B2Y3s1I1A40/golc.png)
 
 
+### Manejo del Acceso (Reservas & Colas)
 
+Las interacciones que el estándar presenta en esta sección son funciones administrativas. Estas interacciones soportan la negociación para el acceso a los laboratorios entre el consumidor (o un grupo/usuario) y el proveedor (a un RigSet específico).
 
+Se presentan dos modelos principales de acceso. Por **colas**, donde el usuario puede pedir acceso y esperar en una fila hasta que el laboratorio esté disponible (normalmente para laboratorios match); y por **reservas** donde el usuario puede separar un intervalo de tiempo con anterioridad y así garantizar la disponibilidad del laboratorio cuándo se va a utilizar. Los mensajes que se especifican son:
 
+* `RigAccessType` - Permite que el consumidor sepa si el laboratorio (RigSet) específico es por colas o por reservas.
+* `RigAvailability` - Para un RigSet que sea administrado por reservas, este mensaje permite preguntar por intervalos disponibles en un rayo específico.
+* `RigBooking` - Realiza una petición de reserva para un RigSet específico.
+* `RigBookingCancel` - Cancela una reserva.
+* `RigBookingStatus` - Obtiene el estado de una reserva. Particularmente permite saber si la reserva se puede redimir o no.
+* `RigBookingsQuery` - Obtiene una lista de las reservas realizadas para un consumidor, grupo consumidor o usuario específico.
+* `RigQueue` - Agrega un experimento a la fila para ser ejecutado.
+* `RigQueueCancel` - Elimina un experimento de la fila de espera.
+* `RigQueueStatus` - Obtiene el estado del experimento en la fila. Es la posición de espera en la que se encuentra el experimento.
 
+A continuación se muestra un diagrama en el cual se realiza una reserva.
 
+![Reserva](http://f.cl.ly/items/152Z382f3H0U1t0R0Y0T/golc.png)
 
+Personalmente la separación entre los dos escenarios me parece buena. Más aún, teniendo que actualmente las plataformas de laboratorios en línea utilizan sistemas diferentes para esto. Por ejemplo, en Deusto solo se manejan colas de prioridad, mientras que en iLabs existen reservas y colas.
 
+Esta separación permite tener algo común a "corto plazo" para integrar las diferentes plataformas. Por esto es clave que un consumidor pueda preguntar qué sistema utiliza cierto laboratorio (`RigAccessType`).
 
+## Comentarios Personales
 
+Pienso que el estándar es un gran esfuerzo y en la dirección correcta, pero aún cuándo en el documento sale que ha decidido el protocolo (si hacer SOAP o REST), pienso que como está es muy difícil implementar REST.
+
+Si se pueden desacoplar un poco más los consumidores de los proveedores, sería una gran ventaja que permitiría evolucionar las dos partes del sistema de manera independiente. Esto es obviamente un trabajo muy difícil pero creo es que es lo que se debería buscar. Aún sin ser necesariamente guiados por hipermedia, en las respuestas que sea posible se debe buscar esto y buscar en un futuro ser guiado siempre por las respuestas del servidor.
+
+El versionamiento también me parece un punto muy importante. Poder calcular automáticamente qué versiones son compatibles con otras sería otra forma de desacoplar sistemas. Así, si un proveedor no es compatible con un consumidor, puede "sugerir" otro proveedor que tenga esta misma versión. Este puede ser un experimento interesante tomando como ejemplo DNS.
+
+En cuanto al uso de XML (y SOAP) para las llamadas, me preocupa un poco que limite el uso de Javascript. Actualmente no se pueden hacer llamados (GET sobretodo) a servidores diferentes desde Javascript. Hay muchos "trucos" para esto pero son situaciones para saltarse el problema, no lo arreglan. Existe algo llamado JSONP, que busca, de alguna manera más limpia, resolver este problema. La forma como funciona es que la petición se hace y se envía una función `callback` que se ejecuta con la respuesta. Esto es un punto importante para analizar ya que si se pueden hacer llamados y cálculos desde el navegador de los estudiantes, los servidores perderían un poco de complejidad y se desacopla aún más consumidor y proveedor. Sobretodo cuándo se quiera utilizar una interfaz de un consumidor para los experimentos. Y no sobra decir la gran cantidad de dinero invertida en HTML5 y Javascript para crear aplicaciones interactivas pesadas en el browser.
