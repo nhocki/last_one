@@ -220,3 +220,101 @@ Al tener todos los posibles valores (parejas, tripletas… - que no van a ser mu
 Se plantea una pregunta interesante y que es un tema abierto de investigación y es, realmente, ¿cuánto se ha aprendido?. Si tomamos por ejemplo un traductor que toma un texto en inglés y lo traduce a chino, siguiendo unas reglas de gramática y semántica, se puede decir que el traductor sabe chino?
 
 Todo esta traducción se da por un "*razonamiento mecánico*" y se cuestiona hasta que punto esto puede ser considerado "inteligencia y aprendizaje".
+
+## Conectar
+
+Este *conectar* es poder pasar más allá de aprender, es razonar y poder decir "*por qué*" de algo. Utilizando un poco la lógica y realizando razonamientos tanto deductivos (de general a individual) como inductivos (de individual a general).
+
+Si tenemos, por ejemplo la pregunta "*¿Quién es el líder de E.E.U.U?*" y tenemos muchos hechos (*facts*) como [X es primer ministro de Y], [X es presidente de C] y por algún método podemos aprender que `X es presidente Y => X líder Y`, podríamos saber que el líder de E.E.U.U es Obama al tener que `Obama es presidente de E.E.U.U`. Pero, esto trae muchos problemas, por ejemplo en India hay primer ministro y presidente. ¿Cuál de los dos es el líder? Se necesita *más conocimiento* para responder esto.
+
+El problema con la lógica *convencional* es que para poder **asegurar** algo de este estilo, se necesitan cuántificadores universales (no existenciales - `Para todo x` y no `Existe un x`). Esto es muy poco común en la vida real. Por ejemplo, si tenemos:
+
+* Para *casi todos* los x, `A(x) => B(x)` - "*La mayoría de los bomberos son hombres*"
+* Para *casi todos* los y, `B(x) => C(x)` - "*La mayoría de los hombres tienen trabajos de bajo riesgo*"
+
+**No se puede concluir que para *casi todos* los x, `A(x) => C(x)`** - "*La mayoría de los bomberos tienen trabajos de bajo riesgo*".
+
+Aún cuándo las primeras dos afirmaciones son ciertas, no se puede deducir la tercera (no existe esa transitividad). Gráficamente se tiene algo así:
+
+![Los bomberos nea](http://f.cl.ly/items/2e1B1s0f062s1T042v24/big.png)
+
+Otro problema con la lógica se da en casos como este:
+
+* Si el aspersor (con lo que se riega un jardín) estaba prendido, entonces la manga está mojada (`S => W`)
+* Si la manga está mojada, entonces llovió (`W => R`)
+
+Obviamente no se sigue que `S => R`, el problema aquí es que la *causalidad* se manejó de manera diferente. Es decir, el hecho de que la manga esté mojada (`W`)es una **característica** observable de `S` y de `W`. Afirmar que *Si `W` pasó es porque pasó `R`* es una *[abducción](http://lema.rae.es/drae/?val=abducci%C3%B3n)*.
+
+Aquí se introduce el concepto de [razonamiento abductivo](http://es.wikipedia.org/wiki/Razonamiento_abductivo) que busca encontrar la mejor explicación o la más probable. En el ejemplo podría ser la *lluvia* (dado que en Colombia llueve mucho).
+
+### Tablas de probabilidad y marginación
+
+Si tenemos una tabla de valores:
+
+ID | W | R
+---|---|---
+1  | y | n
+2  | y | y
+3  | n | n
+…| … | ...
+
+Considerando `n` casos totales, donde `W` pasa en `m` casos, `R` pasa en `k` casos y en `i` casos pasan tanto `W` como `R`.
+
+![Diagrama del problema](http://f.cl.ly/items/3f2v2Y053h0p060I2o0T/big2.png)
+
+Se puede crear una tabla de probabilidades para `p(R,W)` de la siguiente manera:
+
+R | W | P
+--|---|--
+y | y | `i/n`
+n | y | `(m-i)/n`
+y | n | `(k-i)/n`
+n | n | `(n-m-k+i)/n`
+| | ![Probabilidad](http://f.cl.ly/items/2b2H1E1s44073V471D2p/prob1.gif)
+
+Pero supongamos que queremos encontrar la probabilidad de que llovió. Uno puede recorrer la tabla grande, contar las ocurrencias donde llovió y dividir por el total, o se puede utilizar la tabla más pequeña donde ya se tienen algunos cálculos. Pero como la tabla pequeña tiene en cuenta `W`, hay que *marginarla*, esto es, sumar las entradas donde los valores de `R` sean iguales (sin importar los valores de `W`). Así, se tiene que:
+
+| R | P |
+| - | - |
+| y | `k/n`|
+| n | `(n-k) / n`|
+
+Ahora, miremos que en SQL, la marginación es equivalente a sumar una columna:
+
+![Fórmula sin SQL](http://f.cl.ly/items/0o1W0V331T3k2t2x463D/prob2.gif)
+
+`SELECT R, SUM(P) from T GROUP BY R`
+
+#### Tablas de probabilidad y Teorema de Bayes
+
+Ahora, con el teorema de Bayes nos dice que `p(R,W) = p(R|W) * P(W)`, si tenemos las tablas pequeñas podemos generar la tabla de *probabilidad conjunta* (`p(R,W)`) con un `JOIN` en los atributos comunes (en este caso, `W`). Gráficamente es más fácil de apreciar:
+
+![Probabilidad Conjunta](http://f.cl.ly/items/2d2I0L1A1y0K0Q1M3c2k/big3.png)
+
+`SELECT R, SUM(P1*P2) from T1, T2 WHERE W1=W2 GROUP BY R`
+
+Recordemos que la idea es siempre poder construir la información de tablas más grandes a partir de tablas más pequeñas.
+
+#### Tablas de probabilidad con *evidencia*
+
+La **evidencia** son características observadas. Por ejemplo, podemos afirmar que la manga está mojada (`W=y`). Esto va a alterar las probabilidades con las que se trabajan, pues ahora buscaremos `P(R|W)`.
+
+Supongamos que tenemos una probabilidad conjunta (`p(R,W)`) y podemos observar que la manga está mojada. Necesitamos restringir la tabla actual para que tenga solo las entradas que nos sirven (que cumplen con la observación o la evidencia). A esto se le conoce como la *aplicación de la evidencia*.
+
+Usando nuevamente Bayes, tenemos que:
+
+![Aplicación de la evidencia](http://f.cl.ly/items/3x1T2t10163o0t3Y133A/prob3.gif)
+
+En SQL aplicar la evidencia es utilizar *select*: `SELECT R,W,P from T WHERE W=y`
+
+Entonces tenemos que la [probabilidad a posteriori](http://es.wikipedia.org/wiki/Probabilidad_a_posteriori) (probabilidad condicional que es asignada después de que la evidencia es tomada en cuenta), de que haya llovido (`R`) dada la evidencia (`e`) es:
+
+![Probabilidad a posteriori](http://f.cl.ly/items/1D392j04322H2v2y2G1p/prob4.gif)
+
+En la tabla sería:
+
+| A | P |
+|---|---|
+| y | `i/m`|
+| n | `(m-i)/m`|
+
