@@ -86,9 +86,9 @@ Este perfil define la funcionalidad mínima requerida para que un consumidor pue
 
 #### Conocimiento del Sistema (*System Enqiry*)
 
-Se definen diferentes mensajes para diferentes interacciones, por ejemplo, se da una sección de **conocimiento del sistema** (*Systen Enquiry*), donde un consumidor puede pregunrarle al proveedor por los perfiles que soporta y qué versión de un perfil específico soporta. También se puede preguntar por el nivel de servicio que se puede esperar de ese proveedor.
+Se definen diferentes mensajes para diferentes interacciones, por ejemplo, se da una sección de **conocimiento del sistema** (*System Enquiry*), donde un consumidor puede preguntarle al proveedor por los perfiles que soporta y qué versión de un perfil específico soporta. También se puede preguntar por el nivel de servicio que se puede esperar de ese proveedor.
 
-En esta sección se dan varios ejemplos de uso de estos mensajes. Por ejemplo, se pregunta por un nivel de servicio específico. Dentro del ejemplo se definen atributos por los que uno puede preguntar (como *ServiceAvailability* o *InformationRetention*). Personalmente pienso que hay un problema con esto (no con el ejemplo, sino con definir las cosas dentro del ejemplo). Si se van a definir los atributos por los que puedo preguntar, deben ser una sección espefícica del estándar.
+En esta sección se dan varios ejemplos de uso de estos mensajes. Por ejemplo, se pregunta por un nivel de servicio específico. Dentro del ejemplo se definen atributos por los que uno puede preguntar (como *ServiceAvailability* o *InformationRetention*). Personalmente pienso que hay un problema con esto (no con el ejemplo, sino con definir las cosas dentro del ejemplo). Si se van a definir los atributos por los que puedo preguntar, deben ser una sección específica del estándar.
 
 Pero, adicionalmente a esto, me parece que esta definición **no** debe ser así. Debería existir un *endpoint* donde se pregunte por los atributos por los que puedo preguntar (volviendo a la idea de *HATEOAS*). Con el nuevo *endpoint*, yo podría tener una respuesta así:
 
@@ -130,7 +130,7 @@ Se plantean las siguientes interacciones:
 * `GetLabs()` - Retorna una lista de los laboratorios en el proveedor. Si se envía un parámetro con un *RigSet*, la lista se limita a los hijos de ese *RigSet* específico.
 * `GetLabStatus()` - Retorna el estado de un *RigSet* y si se está funcionando en ese momento.
 * `GetLabInfo()` - Para obtener información propietaria sobre ese *RigSet*.
-* `GetExperimentIDs()` - Retorna una lista de identificadores para los experimentos asociados con un *Rig* en ese *RigSet* que están activos. Estos experimentos deben estár relacionados a un *consumidor*, *grupo consumidor* o *usuario individual*. Un laboratorio **activo** puede estar en cola, corriendo o completo con los resultados aún disponibles.
+* `GetExperimentIDs()` - Retorna una lista de identificadores para los experimentos asociados con un *Rig* en ese *RigSet* que están activos. Estos experimentos deben estar relacionados a un *consumidor*, *grupo consumidor* o *usuario individual*. Un laboratorio **activo** puede estar en cola, corriendo o completo con los resultados aún disponibles.
 * `GetExperimentStatus()` - Provee el estado actual de un experimento asociado a un `experimentad`. Indica si dicho experimento ya corrió, o está corriendo (y cuánto lleva corriendo) o si está en un estado de espera.
 
 El siguiente diagrama muestra la interacción entre un *consumidor* y un *proveedor* donde se obtiene la lista de todos los experimentos completados.
@@ -174,6 +174,24 @@ A continuación se muestra un diagrama de secuencias para utilizar una interfaz 
 ![Batch](http://f.cl.ly/items/1a3w1C0A430O3c0a1B1z/golc3.png)
 
 
+#### Laboratorios Interactivos
+
+El estándar también especifica las interacciones necesarias para utilizar laboratorios interactivos. Estos laboratorios son en los cuales el usuario puede cambiar (interactuar) con el laboratorio *mientras* el experimento está corriendo. Nuevamente, la interfaz que se le presenta a los estudiantes puede ser creada por el consumidor o el proveedor. En caso de presentar una interfaz del consumidor, el rendimiento debe ser tenido en cuenta (aún más que en los laboratorios match) y se debe intentar optimizar la interfaz para una buena interacción del estudiante con el laboratorio.
+
+Los mensajes que se definen son:
+
+* `InteractiveExpCreate` - Crea un experimento interactivo en blanco en el proveedor.
+* `InteractiveExpDelete` - Elimina un experimento interactivo del proveedor.
+* `InteractiveExpGetSpecs` - Retorna una copia del esquema de interacciones para este experimento. Esto es muy único de cada experimento.
+* `InteractiveExpLaunchConsIF` - Crea una petición para iniciar un experimento interactivo con la interfaz del consumidor.
+* `InteractiveExpSendCommand` - Envía un XML con los comandos para la interacción con el laboratorio (para controlar el laboratorio mientras corre).
+* `InteractiveExpEndConsIF` - Termina un laboratorio que estaba corriendo con la interfaz del consumidor.
+* `InteractiveExpLaunchProvIF` - Obtiene una URL con la interfaz del proveedor para este experimento. Si el consumidor no tiene permiso para correr el laboratorio (por ejemplo la reserva aún no ha comenzado o expiró) se retorna un error.
+* `GetExperimentResults` - Obtiene los resultados del experimento.
+
+A continuación se muestra un diagrama de secuencias donde se utiliza la interfaz del consumidor para acceder a un laboratorio interactivo. Nuevamente se muestra esta secuencia pues es la situación más compleja.
+
+![Golc Interactive](http://f.cl.ly/items/3e0R393E0B2Y3s1I1A40/golc.png)
 
 
 
