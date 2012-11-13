@@ -78,13 +78,11 @@ Creo que actualmente el estándar que se debe utilizar es ***OAuth 2.0***. Hay m
 
 En esta sección el estándar define las interacciones básicas que un Proveedor debe soportar. Se define sólo el perfil básico pero se mencionan "futuros perfiles".
 
-Se presentan diferentes escenarios y los mensajes requeridos para las interacciones.
-
-### Perfil Básico
+## Perfil Básico
 
 Este perfil define la funcionalidad mínima requerida para que un consumidor pueda utilizar un laboratorio (interactivo o *batch*) de un proveedor.
 
-#### Conocimiento del Sistema (*System Enqiry*)
+### Conocimiento del Sistema (*System Enqiry*)
 
 Se definen diferentes mensajes para diferentes interacciones, por ejemplo, se da una sección de **conocimiento del sistema** (*System Enquiry*), donde un consumidor puede preguntarle al proveedor por los perfiles que soporta y qué versión de un perfil específico soporta. También se puede preguntar por el nivel de servicio que se puede esperar de ese proveedor.
 
@@ -121,7 +119,7 @@ Donde los parámetros se pueden mandar en el *request* de HTTP.  Nuevamente, las
 Esta observación se mantiene en todos los ejemplos presentados en el estándar, por esto, solo la pondré una vez.
 
 
-#### Conocimiento de los laboratorios
+### Conocimiento de los laboratorios
 
 En esta sección se definen interacciones para preguntar sobre el estado de un *RigSet* específico o de un experimento que se ha llevado a cabo en ese *RigSet*.
 
@@ -144,7 +142,7 @@ Personalmente pienso que las interacciones están bien definidas pero tengo cier
 De esta manera, la URL muestra también la jerarquía de los recursos que existe en el sistema.
 
 
-#### Laboratorios Batch (o en lotes)
+### Laboratorios Batch (o en lotes)
 
 Los laboratorios `match` son aquellos donde los estudiantes configuran el equipo, envían la configuración y se corre en el laboratorio después de pasar por una cola de espera. Se llaman así pues no hay ninguna interacción *mientras* se corre el experimento.
 
@@ -174,7 +172,7 @@ A continuación se muestra un diagrama de secuencias para utilizar una interfaz 
 ![Batch](http://f.cl.ly/items/1a3w1C0A430O3c0a1B1z/golc3.png)
 
 
-#### Laboratorios Interactivos
+### Laboratorios Interactivos
 
 El estándar también especifica las interacciones necesarias para utilizar laboratorios interactivos. Estos laboratorios son en los cuales el usuario puede cambiar (interactuar) con el laboratorio *mientras* el experimento está corriendo. Nuevamente, la interfaz que se le presenta a los estudiantes puede ser creada por el consumidor o el proveedor. En caso de presentar una interfaz del consumidor, el rendimiento debe ser tenido en cuenta (aún más que en los laboratorios match) y se debe intentar optimizar la interfaz para una buena interacción del estudiante con el laboratorio.
 
