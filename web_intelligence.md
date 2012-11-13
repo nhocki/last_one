@@ -318,3 +318,58 @@ En la tabla sería:
 | y | `i/m`|
 | n | `(m-i)/m`|
 
+
+##### Lo más importante es resaltar que construir probabilidades conjuntas en SQL es realizar JOINS y aplicar evidencias es hacer SELECT
+
+### Redes Bayesianas
+
+Miremos como utilizar el clasificador bayesiano básico con tablas de probabilidad. Si tenemos estas tablas:
+
+![Tabla de probabilidades](http://f.cl.ly/items/1j281n2p12431p2b2C2S/probs.jpg)
+
+Se puede saber la probabilidad de que haya llovido si vemos que la manga está mojada así:
+
+`SELECT R, SUM(P1 * P2) FROM T1, T2 WHERE W=y AND R1 = R2 GROUP BY R`
+
+Esto nos da la tabla
+
+| R | P |
+|---|---|
+| y | 0.9 * 0.2 = 0.18|
+| n | 0.2 * 0.8 = 0.16|
+
+Normalizando tenemos que `p(R=y) = 0.18 / (0.18 + 0.16) = 53%`.
+
+Ahora supongamos que tenemos más características observables, por ejemplo que haya truenos (`T`) o que se pueda ver una manguera (`H`) en el piso. Podemos tener dos clasificadores para esto:
+
+![Baysian Network 1](http://f.cl.ly/items/02311o2q3Q3N1f2p3Q2p/big4.png)
+
+Pero, como **`W` es la misma observación**, debemos juntar los dos clasificadores en uno solo. Esto se conoce como una red bayesiana.
+
+![Baysian Network](http://f.cl.ly/items/252l2K341b0C332p1e2E/big.png)
+
+Tenemos que, por Bayes (aplicada varias veces):
+
+`p(H,W,T,S,R) = p(H,W,T,S|R) * p(R) = p(H,W,T|S,R) * p(S|R) * p(R)`
+
+Como S y R son independientes (y se asume que las observaciones `H,T,W` son independientes dados `S,R`), entonces:
+
+`p(H,W,T,S,R) = p(H|S,R) * p(W|S,R) * p(T|S,R) * p(S) * p(R)`
+
+Como H es independiente de R y T es independiente de S, se tiene que: 
+
+**`p(H,W,T,S,R) = p(H|S) * p(W|S,R) * p(T|R) * p(S) * p(R)`**
+
+#### Como regla general se tiene que *sólo* se necesita la probabilidad conjunta de los padres en el árbol
+
+Esto quiere decir que se puede seguir utilizando SQL simplemente realizando los *JOIN*, *SUM* y *SELECT* necesarios para aplicar evidencias (*select*) o marginar alguna variable (*sum*) entre las diferentes tablas de probabilidad (*join*)
+
+El hecho de que dos eventos puedan producir la misma observación tiene un efecto bastante interesante al analizar los datos. En nuestro ejemplo tenemos que tanto `S` como `R` causan `W`, podemos ver como la probabilidad de un evento dado que se observó la característica (en este caso `W`) disminuye aún sin observar el otro evento.
+
+Es decir, el hecho de que haya otra manera de mojar la manga además de la lluvia (con el aspersor) disminuye la probabilidad de lluvia con solo ver la manga mojada, aún sin tener información de haber usado o no el aspersor.
+
+Si se observa que un evento pasó, por ejemplo que el aspersor estaba encendido (`S=y`), la probabilidad de que haya llovido por que vemos la manga mojada baja aún más. Esto se llama **propagación de la credibilidad**.
+
+Esta propagación de la credibilidad es la base para el razonamiento abductivo, que busca dar la mejor explicación posible para algo. Esto es una forma de trabajar con cierta incertidumbre.
+
+No sobra mencionar que SQL, posiblemente, no es la manera más eficiente de trabajar con estas probabilidades. Map Reduce también puede ser utilizado.
