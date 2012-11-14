@@ -373,3 +373,15 @@ Si se observa que un evento pasó, por ejemplo que el aspersor estaba encendido 
 Esta propagación de la credibilidad es la base para el razonamiento abductivo, que busca dar la mejor explicación posible para algo. Esto es una forma de trabajar con cierta incertidumbre.
 
 No sobra mencionar que SQL, posiblemente, no es la manera más eficiente de trabajar con estas probabilidades. Map Reduce también puede ser utilizado.
+
+## Comentarios del curso
+
+De los tres cursos de Coursera que realicé, este fue el mejor. Aún cuándo el tema es muy amplio y tiene infinidades de aplicaciones, los ejemplos utilizados eran muy interesantes. Las tareas eran prácticas y era un tema completamente nuevo para mí.
+
+En cuánto a los quizzes y exámenes, había ciertos problemas con algunas calificaciones. Por ejemplo, había preguntas con múltiples respuestas válidas. Preguntaban por una probabilidad que daba, por ejemplo, 2.3 y había respuestas que eran "Entre 2 y 3" y "Menor que 3". Ambas son válidas. Pero, a pesar de esto, las tareas eran completamente relevantes con el contenido de los vídeos.
+
+Los ejemplos y la forma como se llevaba el tema era muy bien planeado y las explicaciones eran muy claras. Eso sí, sigue siendo un abre-bocas para el tema, pero es algo que en 8 semanas es muy difícil de cubrir. Más en una clase tan "impersonal".
+
+Otro problema (que al final se resolvió) era que las diapositivas no estaban disponibles pues son contenido de un libro que el profesor está escribiendo y el editor no le permitió compartirlas hasta el final. Aún así, como los vídeos y las preguntas de los exámenes estaban altamente ligados no había mucho problema con eso.
+
+Algo que era muy bueno, es que en los diferentes temas del curso, el profesor iba diciendo ciertos trabajos de investigación que se están haciendo actualmente.
