@@ -57,3 +57,48 @@ Existen muchas estrategias para obtener comentarios y retroalimentación de los 
 
 Por ejemplo, **enviar encuestas**. Es una muy buena forma de obtener *mucha* retroalimentación pero los resultados que se obtienen no son muy precisos. Los humanos tendemos a "mejorar" cuándo estamos llenando una encuesta. Muchas veces al preguntarnos por un servicio somos más que compresivos y calificamos mejor de lo que recibimos. Lo mismo cuándo nos auto-calificamos, nadie quiere sentirse muy mal por su desempeño, entonces lo normal es subir un poco la calificación que nos damos. Estos comportamientos hacen que las encuestas sean una excelente manera de tener *mucha retroalimentación* pero no *muy buena retroalimentación* (y por buena me refiero a real, no a positiva).
 
+Otra forma de obtener retroalimentación es a través de la **observación de los usuarios**. Viendo como los usuarios trabajan con el prototipo nos puede ayudar a mejorar puntos claves en el diseño y la experiencia al rededor del producto que deseamos crear. Por ejemplo, si hacemos un producto para que los camioneros utilicen mientras manejan y tiene teclas o botones pequeños, es muy probable que esto dificulte su uso, pues muchos camioneros utilizan guantes grandes para el frío.
+
+Esta técnica de observar a las personas, se basa en la forma como los antropólogos estudian culturas. Donde primero observan y posteriormente forman parte de la cultura. La idea de esta técnica es poder obtener el conocimiento tácito que tienen las personas. Se busca saber:
+
+* ¿Qué hacen las personas actualmente?
+* ¿Qué metas u objetivos tienen las personas (con el producto)?
+* ¿Cómo estos objetivos o actividades que se quieren realizar encajan en un ecosistema más grande?
+* ¿Qué similitudes o diferencias hay entre las personas?
+* El contexto en general, como ¿a qué horas usarían el producto? ¿Con quién? ... 
+
+Cuándo estamos desarrollando un producto, es importante tener claro que se quiere realizar algo que las personas quieran o necesiten, pero esto **no** es (necesariamente) desarrollar lo que las personas piden. Muchas veces las personas *no saben qué quieren*. Esto es aún más cierto en tecnología. Uno **no debe estar pendiente de lo que la gente dice, sino de lo que hacen**.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
