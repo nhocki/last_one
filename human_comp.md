@@ -70,35 +70,55 @@ Esta técnica de observar a las personas, se basa en la forma como los antropól
 Cuándo estamos desarrollando un producto, es importante tener claro que se quiere realizar algo que las personas quieran o necesiten, pero esto **no** es (necesariamente) desarrollar lo que las personas piden. Muchas veces las personas *no saben qué quieren*. Esto es aún más cierto en tecnología. Uno **no debe estar pendiente de lo que la gente dice, sino de lo que hacen**.
 
 
+## Prototipos Rápidos
+
+Como se ha mencionado previamente, a medida que el desarrollo del producto avanza, los prototipos van siendo más y más "fieles" a lo que será el producto final, y por eso en cada etapa del desarrollo se deben utilizar herramientas que nos permitan mostrar el estado donde estamos. En un principio no tiene mucho sentido tener un *Wireframe* en HTML. Miremos el proceso que se puede seguir para realizar una aplicación web.
+
+### Storyboards
+
+Un *Storyboard* es un conjunto de dibujos pequeños, que se utilizan para mostrar el **escenario** donde se usará la aplicación. Por ejemplo:
+
+![Storyboard](http://f.cl.ly/items/1L2D15310s0K3h3N0523/storyboard.png)
+
+Es muy importante resaltar que el *Storyboard* quiere contar una historia pero no quiere decir *cómo será* la aplicación. En ningún momento es necesario (y no es recomendable) empezar a pensar en la interfaz de usuario en un *Storyboard*. El **Storyboard es para mostrar las tareas y escenarios que se quieren soportar con la aplicación**.
+
+Uno de los problemas más grandes y comunes al hacer diseño de interfaces de usuario, es concentrarse en la interfaz **antes** de concentrarse en la tarea que se quiere resolver. El *Storyboard* busca resolver esto al incluir personas usando la aplicación.
+
+Un *Storyboard* debe tener:
+
+* **Escenario:** ¿Quiénes están involucrados? ¿En qué ambiente? ¿Qué tarea quieren desarrollar?
+* **Secuencia:** ¿Qué pasos deben dar? ¿Qué situación haría que las personas utilizaran la aplicación? ¿Qué tarea se está mostrando?
+* **Satisfacción:** ¿Qué motivó a las personas a usar el sistema? ¿Qué le permite a las personas realizar el sistema? Y más importante, ¿qué necesidad resuelve el sistema?
+
+Nuevamente, lo más importante de un *Storyboard* es que permite pensar/mostrar cómo resolveríamos un problema de los usuarios, sin pensar aún en la interfaz que tendríamos.
+
+### Prototipos en Papel
+
+Una vez los escenarios estén claros, se puede pasar a la primera etapa de la construcción de las interfaces. Hacer prototipos en papel. La idea en esta etapa, así como en los *Storyboards* es poder tener resultados poco fieles pero que se puedan construir rápidamente. La diferencia en esta etapa es que **ya** se empieza a pensar en la interfaz del producto.
+
+Estos prototipos no necesariamente tienen que ser completamente hechos a mano. Uno puede imprimir imágenes de elementos comunes del sistema operativo (un botón de iPhone por ejemplo) que ayudará a dar mucho más contexto al usuario de dónde se utilizará la aplicación.
+
+A List Apart, tiene un muy [buen artículo](http://www.alistapart.com/articles/paperprototyping/) sobre prototipos en papel para páginas web.
+
+![Paper Prototype](http://f.cl.ly/items/2U0m3g0I2S2f2u0G3f0S/Screen%20Shot%202012-12-12%20at%2011.54.40%20AM.png)
+
+### Maquetas Digitales
+
+Una vez se tenga buena retroalimentación con los prototipos en papel, se puede pasar a prototipos un poco más fieles utilizando maquetas digitales (*mockups*). Estos prototipos toman mucho más tiempo que los de papel, por eso es importante hacerlos después, pues ya se ha tenido retroalimentación que puede prevenir errores que tomarán más tiempo (tanto en hacerlos como en corregirlos).
+
+Hay muchos programas para hacer estos prototipos. Uno muy conocido y muy bueno es [Balsamiq](http://www.balsamiq.com/). Aquí hay una muestra de una aplicación para almacenar discusiones que se han tenido mediante correo electrónico.
+
+![Catwalk](http://f.cl.ly/items/3n2O2h1j2D1O1I0Q1s2L/Screen%20Shot%202012-12-12%20at%2012.10.55%20PM.png)
+
+A partir de este punto se puede utilizar una estrategia llamada **Mago de Oz**, donde se muestran los prototipos a usuarios "reales" pero las funciones más complejas del sistema se simulan. Por ejemplo, encontrar la ruta más corta en un mapa, teniendo en cuenta el tráfico y el reporte del tiempo. Uno puede decirle al usuario "esta es la ruta", sin calcularla. Pues lo importante no es como se calcula sino lo que el usuario hace en ella.
+
+Como en el Mago de Oz, todo era mentira y había alguien "detrás de la cortina". Se debe buscar que tener alguien detrás de la cortina para que la aplicación **parezca y se sienta real** aunque no lo sea.
+
+### Static HTML
+
+### Dynamic Data & Databases
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Creating And Comparing Alternatives
