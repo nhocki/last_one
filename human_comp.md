@@ -102,6 +102,8 @@ A List Apart, tiene un muy [buen artículo](http://www.alistapart.com/articles/p
 
 ![Paper Prototype](http://f.cl.ly/items/2U0m3g0I2S2f2u0G3f0S/Screen%20Shot%202012-12-12%20at%2011.54.40%20AM.png)
 
+En esta etapa se puede cambiar toda la arquitectura y diagramación de la solución que se desea construir. Se pueden explorar más escenarios para después pasar a archivos digitales.
+
 ### Maquetas Digitales
 
 Una vez se tenga buena retroalimentación con los prototipos en papel, se puede pasar a prototipos un poco más fieles utilizando maquetas digitales (*mockups*). Estos prototipos toman mucho más tiempo que los de papel, por eso es importante hacerlos después, pues ya se ha tenido retroalimentación que puede prevenir errores que tomarán más tiempo (tanto en hacerlos como en corregirlos).
@@ -110,15 +112,33 @@ Hay muchos programas para hacer estos prototipos. Uno muy conocido y muy bueno e
 
 ![Catwalk](http://f.cl.ly/items/3n2O2h1j2D1O1I0Q1s2L/Screen%20Shot%202012-12-12%20at%2012.10.55%20PM.png)
 
+Aquí, también se pueden crear varias diagramaciones de la solución que se quiere implementar. Como se puede ver en la imagen, la fidelidad aún es baja, pero ya se empieza a pensar en la **estructura** de la interfaz.
+
 A partir de este punto se puede utilizar una estrategia llamada **Mago de Oz**, donde se muestran los prototipos a usuarios "reales" pero las funciones más complejas del sistema se simulan. Por ejemplo, encontrar la ruta más corta en un mapa, teniendo en cuenta el tráfico y el reporte del tiempo. Uno puede decirle al usuario "esta es la ruta", sin calcularla. Pues lo importante no es como se calcula sino lo que el usuario hace en ella.
 
 Como en el Mago de Oz, todo era mentira y había alguien "detrás de la cortina". Se debe buscar que tener alguien detrás de la cortina para que la aplicación **parezca y se sienta real** aunque no lo sea.
 
-### Static HTML
+### HTML Estático
+
+Tener un prototipo en HTML estático es una tarea que se puede hacer cada día más fácil con la ayuda de herramientas, pero, aún así, es costoso comparado con las etapas previas de diseño. En esta etapa ya se empiezan a variar aspectos "menores" del diseño, como colores y tipografía.
+
+Para crear un HTML estático se recomiendan herramientas como [DivShot](http://divshot.com/). Con esta herramienta se construyen las páginas HTML en una interfaz muy fácil de utilizar y sin la necesidad de codificarla.
+
+![DivShot](http://f.cl.ly/items/3610302t2I0V2X0h023X/Screen%20Shot%202012-12-12%20at%202.28.05%20PM.png)
 
 ### Dynamic Data & Databases
 
-
+El último paso del proceso sería la persistencia y muestra de datos reales. Teniendo ya la interfaz lista, podemos pensar en cómo se van a guardar los datos y cuáles serán "las reglas de la aplicación". En este punto se deben tener más que claras las interacciones de los usuarios con la aplicación lo que facilita mucho codificar y modelar el problema desde un punto de vista más técnico.
 
 
 ## Creating And Comparing Alternatives
+
+Esto se basa en un estudio de Steven Dow en Stanford, donde se planteaba si, en el momento de diseñar, es mejor centrarse en la **cantidad o en la calidad**? Se ilustra el escenario de una profesora que dividió la clase en dos partes, a la primera mitad se le iba a calidad exclusivamente sobre la cantidad de cosas que hicieran, la otra mitad iba a tener su calificación sobre la calidad de una pieza.
+
+El resultado fue que, mientras la mitad "de cantidad" estaba ocupada haciendo muchas cosas -y aprendiendo de sus errores-, la mitad de la calidad se pasó mucho tiempo pensando y buscando teoría para soportar su calidad. Al final salieron con mucha teoría, pero nada de trabajo.
+
+Esto nos indica la importancia de tener prototipos fáciles de cambiar (o desechar por completo), y varias alternativas para esto. Esto se hace para prevenir lo que Karl Duncker llama "Fijación Funcional", esto consiste en atacar una y solo una idea (normalmente la primera que tenemos) hasta que la hagamos funcionar (si podemos).
+
+El tener una sola idea, y alguien la critica, es mucho más probable tomar esa crítica como "personal" a si tengo varias ideas y critican alguna. Además, al crear diferentes alternativas, se puede transferir el conocimiento aprendido en una hacia las otras y así evolucionar el diseño aún si se trata de una idea diferente.
+
+Es importante resaltar que no es solo crear varias (y mostrar la mejor), es crear varias y mostrar varias. Conseguir retroalimentación de todas para evolucionar de acuerdo a todas las opciones, no a la que consideramos mejor.
