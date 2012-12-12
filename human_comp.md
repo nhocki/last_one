@@ -92,6 +92,8 @@ Un *Storyboard* debe tener:
 
 Nuevamente, lo más importante de un *Storyboard* es que permite pensar/mostrar cómo resolveríamos un problema de los usuarios, sin pensar aún en la interfaz que tendríamos.
 
+Aquí se puede encontrar una [guía para hacer *storyboards*](http://spark-public.s3.amazonaws.com/hci/assignment_ressources/assignment3_storyboard_notes.pdf).
+
 ### Prototipos en Papel
 
 Una vez los escenarios estén claros, se puede pasar a la primera etapa de la construcción de las interfaces. Hacer prototipos en papel. La idea en esta etapa, así como en los *Storyboards* es poder tener resultados poco fieles pero que se puedan construir rápidamente. La diferencia en esta etapa es que **ya** se empieza a pensar en la interfaz del producto.
@@ -131,7 +133,7 @@ Para crear un HTML estático se recomiendan herramientas como [DivShot](http://d
 El último paso del proceso sería la persistencia y muestra de datos reales. Teniendo ya la interfaz lista, podemos pensar en cómo se van a guardar los datos y cuáles serán "las reglas de la aplicación". En este punto se deben tener más que claras las interacciones de los usuarios con la aplicación lo que facilita mucho codificar y modelar el problema desde un punto de vista más técnico.
 
 
-## Creating And Comparing Alternatives
+## Creando y Comparando Alternativas
 
 Esto se basa en un estudio de Steven Dow en Stanford, donde se planteaba si, en el momento de diseñar, es mejor centrarse en la **cantidad o en la calidad**? Se ilustra el escenario de una profesora que dividió la clase en dos partes, a la primera mitad se le iba a calidad exclusivamente sobre la cantidad de cosas que hicieran, la otra mitad iba a tener su calificación sobre la calidad de una pieza.
 
@@ -142,3 +144,6 @@ Esto nos indica la importancia de tener prototipos fáciles de cambiar (o desech
 El tener una sola idea, y alguien la critica, es mucho más probable tomar esa crítica como "personal" a si tengo varias ideas y critican alguna. Además, al crear diferentes alternativas, se puede transferir el conocimiento aprendido en una hacia las otras y así evolucionar el diseño aún si se trata de una idea diferente.
 
 Es importante resaltar que no es solo crear varias (y mostrar la mejor), es crear varias y mostrar varias. Conseguir retroalimentación de todas para evolucionar de acuerdo a todas las opciones, no a la que consideramos mejor.
+
+## Evaluación con Heurísticas
+
