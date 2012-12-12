@@ -147,3 +147,60 @@ Es importante resaltar que no es solo crear varias (y mostrar la mejor), es crea
 
 ## Evaluación con Heurísticas
 
+Esta evaluación fue inventada por Jakob Nielsen y busca encontrar problemas de usabilidad en el diseño. Esta técnica busca obtener retroalimentación muy rápido y se puede utilizar tanto en productos terminados como prototipos (papel, digitales o HTML estáticos-más fieles).
+
+La idea es que se entrega a las personas que van a evaluar el diseño, una serie de principios que deben ser utilizados para evaluar el diseño. Cada persona lo hará de manera independiente y después compartirán los resultados. Nielsen propone diez heurísticas:
+
+**1. Visibilidad del estado del sistema:** El sistema debe *siempre* informar al usuario de lo que está pasando. Esto se puede lograr a través de retroalimentación (mensajes mostrando que una operación fue exitosa, o falló) en el momento adecuado.
+
+**2. Consistencia entre el mundo real y el sistema:** El sistema debe hablar el lenguaje del usuario. Con palabras, términos y conceptos similares a los del usuario (en el área de la solución) y no técnicos enfocados hacia el sistema. Se deben seguir las convenciones del mundo real, mostrando la información en un orden lógico y natural.
+
+**3. Control y libertad del usuario:** El usuario debe poderse "devolver" en el sistema cuando, por ejemplo, presiona un botón indeseado. Esto se debe permitir sin la necesidad de hacer muchas cosas.
+
+**4. Consistencia y estándares:** Las cosas que signifiquen lo mismo, se deben llamar por el mismo nombre. Si dos acciones son la misma, el usuario debe saberlo solo con el nombre.
+
+**5. Prevención de errores:** Aún mejor que buenos mensajes de errores es tener un diseño que prevenga los errores. Si se tiene un formulario con campos requeridos, mostrarlos al usuario y alertar (sin dejarlo seguir) sobre los campos requeridos que no ha llenado.
+
+**6. Reconocimiento y no recordar:** El sistema debe minimizar la necesidad del usuario de recordar cosas. Ofrecer ayuda constante mientras se utiliza la herramienta, tener instrucciones siempre visibles o un orden lógico de la información son algunas de las formas para lograr esto.
+
+**7. Flexibilidad y eficiencia de uso:** Tener comandos (invisibles para los usuarios principiantes) que permitan realizar las tareas de una manera más fácil y rápida, pueden mejorar mucho la experiencia del usuario en la aplicación. Sobre todo para acciones que se repiten mucho.
+
+**8. Estética y diseño minimalista:** Los mensajes o menús, no deben contener texto que sean irrelevantes. Cada pedazo de información innecesaria compite con la información realmente necesaria por la atención del usuario.
+
+**9. Ayudar a los usuarios a reconocer, diagnosticar y corregir los errores:** Los mensajes de error deben ser en lenguaje escrito (usando la heurística 2) y no con códigos del sistema. Deben presentar una opción para solucionarlos.
+
+**10. Ayuda y documentación:** Además de las ayudas "en línea" (heurística 6) se debe tener un buen sistema de ayuda del sistema completo. Un lugar donde los usuarios puedan buscar cómo usar el sistema y preguntar por acciones que no logren realizar. Este sistema de ayudas debe ser **muy fácil de utilizar**, donde el contenido se pueda ser **buscado con facilidad**.
+
+Estas diez heurísticas son sacadas de la [página del Nielsen Norman Group](http://www.nngroup.com/articles/ten-usability-heuristics/) donde adicionalmente vinculan a una [página con ejemplos](http://designingwebinterfaces.com/6-tips-for-a-great-flex-ux-part-5) de cada una de las diez heurísticas en páginas web.
+
+**Como dice Nielsen, estas son heurísticas por que son reglas naturales y no unas guías específicas de usabilidad.**
+
+*Personalmente me asombra que las diez reglas son muy intuitivas. Tanto que al leerlas decimos "obvio, ¿qué sistema no tiene esto?", pero al momento de construir soluciones las olvidamos casi por completo!*
+
+Adicionalmente a las diez heurísticas de Nielsen, se pueden agregar varias que sean específicas al contexto de la solución.
+
+Para hacer una evaluación heurística, se deben tener varios evaluadores. Se les debe explicar el dominio de la solución (conceptos y términos médicos por ejemplo) y un poco de contexto de como se va a utilizar (o como se espera que se utilice) la solución.
+
+Después cada evaluador realiza la prueba. **Por separado**. Y al final se comparten resultados. En esta evaluación se debe poner una calificación a cada error encontrado (crítico, severo…) que después se puede complementar con la calificación del grupo.
+
+Al final, se analizan los resultados entre todos, evaluadores y desarrolladores.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
