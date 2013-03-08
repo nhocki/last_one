@@ -213,6 +213,30 @@ Se podría resumir que los aspectos importantes de un producto cuando el usuario
 * Representación estandarizada de objetos a lo largo del producto
 * Utilizar metáforas de elementos conocidos por el usuario para referirse a objetos en el sistema (como el Escritorio en un sistema operativo)
 
+## Experimentos en la Web
+
+Como en todos los productos, en las páginas web se pueden probar diferentes alternativas para elegir la mejor. Esto es conocido como *A/B Testing*. Se tienen dos (o más) alternativas y se divide el tráfico entre ellas, se toman métricas y se elige la mejor.
+
+Muchas veces los cambios en diseño tienen un impacto grandísimo en las acciones de los usuarios en una página Web. Solo cambiar el texto de un título o un botón puede influir en que más (o menos) usuarios se subscriban a la página. A/B Testing es una forma rápida de obtener retroalimentación de usuarios reales.
+
+Los experimentos deben tener un objetivo, por ejemplo, que el usuario se subscriba a los correos masivos, o compre un producto. Estos objetivos se llaman "acciones". Los botones o elementos que invitan a estas acciones se llaman "call to action" (llamado a la acción). Es muy común variar atributos como color o texto dentro de estos "call to action".
+
+Se da un ejemplo de la campaña de Barack Obama, donde cambiar el texto del botón principal de "Sign Up" por "Learn More" aumentó el número de personas llenando el formulario en un 18%.
+
+Existen muchas opciones para desarrollar pruebas A/B. Una muy recomendada es [Optimizely](https://www.optimizely.com) que permite editar una página específica sin necesidad de tener conocimientos Web.
+[Google Analytics](http://analytics.google.com) también permite llevar a cabo experimentos a través del *Google Website Optimizer*.
+
+Un ejemplo con la página de EAFIT.
+
+### Versión Original
+
+![Versión Original](https://www.evernote.com/shard/s58/sh/d0529c0f-8377-490d-996a-a4d863b0b5ee/c0f07d265510a61174aa292291136536/res/a79db3de-b2cc-4421-80c0-06fb6f6eb6f5/skitch.png?resizeSmall&width=832)
+
+### Versión Editada
+![Versión Editada](https://www.evernote.com/shard/s58/sh/bc97cd95-8de8-4123-8b7f-19c5e5588d85/bbf3842a6ceca1e79cf07648e1b9783b/res/d32a53af-3367-44db-97a3-fd6c8465951b/skitch.png?resizeSmall&width=832)
+
+
+Una de las grandes ventajas de las pruebas A/B  es que la subjetividad del equipo de trabajo no tiene lugar en el resultado final. Por más que los diseñadores piensen que una opción es la mejor, no se puede alegar contra los datos. Al final, lo importante no es lo que el equipo piense que es mejor, sino lo que funciona mejor con los usuarios.
 
 
 ## Comentarios del Curso
