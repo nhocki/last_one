@@ -185,11 +185,54 @@ Después cada evaluador realiza la prueba. **Por separado**. Y al final se compa
 
 Al final, se analizan los resultados entre todos, evaluadores y desarrolladores.
 
+## Manipulación Directa del Producto
+
+Cuando se realiza un producto con el cual las personas interactúan, la observación es clave para obtener retroalimentación sobre como las personas utilizan una solución similar o un prototipo. Para entender más la forma de utilizar, se tienen seis preguntas: **¿Qué tan fácil puede alguien 
+
+* determinar o definir la función del dispositivo?
+* encontrar que acciones se pueden realizar con el dispositivo?
+* determinar los pasos necesarios para "lograr el objetivo" con las acciones necesarias que necesitan realizar?
+* realizar la acción (o acciones)?
+* saber en qué estado está el sistema?
+* basado en el estado que está el sistema, saber en qué paso estoy?
+
+*Preguntas propuestas por Don Norman en **The Design of Everyday Things***
+
+Para reducir abismos entre la intención que tienen los desarrolladores del producto y la forma como éste es utilizado por los usuarios, se debe proveer:
+
+* **Visibilidad:** Si existe algo que el sistema puede hacer, mostrárselo al usuario. Si es un producto físico, se puede utilizar un botón o empuñadura.
+* **Retroalimentación:** Mantener al usuario siempre informado sobre lo que está pasando y lo que puede hacer.
+* **Consistencia:** Nombrar consistentemente los elementos del sistema. Dar nombres comunes para el usuario.
+* **Operaciones no destructivas:** Permitir al usuario "des-hacer" una acción sin la necesidad de reiniciar el proceso completo.
+* **Discoverabilidad:** Todas las funciones del producto se deben poder descubrir al navegar los menús del producto. En un producto físico al abrir tapas (como en un control remoto).
+* **Fiabilidad:** El producto debe funcionar. Sin excusas. Y las operaciones u eventos no se deben dar de manera aleatoria.
+
+Se podría resumir que los aspectos importantes de un producto cuando el usuario interactúa directamente con éste son:
+
+* Retroalimentación Instantánea
+* Representación estandarizada de objetos a lo largo del producto
+* Utilizar metáforas de elementos conocidos por el usuario para referirse a objetos en el sistema (como el Escritorio en un sistema operativo)
 
 
 
+## Comentarios del Curso
 
+De todos los cursos que he hecho en Coursera, creo que este es al que más tiempo le han dedicado. Los vídeos son bien editados y durante los vídeos el profesor "escribe" sobre la presentación para explicar los conceptos. Pero, también es el curso que más trabajo y dedicación requiere por parte de los estudiantes. Esto no es necesariamente malo, más aún si es un curso "por créditos".
 
+Los vídeos y ejemplos eran de proyectos reales, con prototipos de productos conocidos y en contextos muy conocidos, lo cual invitaba a investigar más sobre el producto que mostraban.
+
+### Evaluación Por Pares
+
+Adicional a los exámenes y quizzes, se tenía un proyecto que se realizaba a lo largo del curso. Cada semana se debía entregar una parte más del proyecto. Aquí es donde más trabajo se requería.
+
+El proyecto era complejo y había muchas actividades para hacer. La actividad a realizar como tal no era muy ligada a los vídeos que se veían en la semana, lo cual complementaba el aprendizaje (pero requería aún más dedicación)
+pero lo más difícil era que había que evaluar otros proyectos también.
+
+Antes de evaluar a un compañero, uno debía pasar un proceso de "entrenamiento" para evaluar la actividad de la semana. Este proceso, consistía en evaluar entregas de cursos anteriores. Lo malo (o bueno - tengo sentimientos encontrados) de este proceso es que si uno no calificaba "igual" al profesor, uno estaba calificando mal y el proceso de entrenamiento era eterno.
+
+Así, el tiempo que uno tenía reservado para evaluar, se iba en "entrenamiento". Y si uno no evaluaba, le bajaban la nota en un 20%.
+
+Creo que un poco más de retroalimentación en la parte de "entrenamiento" era necesaria. Me gusta la idea de calificar otros trabajos, pero la fase de entrenamiento era irritante.
 
 
 
